@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>Anthony's Word of the Day</title>
+</head>
+
+<body>
+    <h1>Welcome to Ant's Word of the Day page</h1>
+    <p>Check back daily for a new word!</p>
+    <p>Do you want a B9 SQ5 too?</p>
+    <p>This page has been visited <span id='hits'></span> times</p>
+    <a href="/word.html">View the Word of the Day</a>
+    <h2>Enjoy the data</h2>
+</body>
+<script>
+    fetch('hits')
+        .then(response => response.json())
+        .then(
+            data => {
+                document.getElementById('hits').textContent = data.hitCount;
+            }
+        );
+</script>
+</html>

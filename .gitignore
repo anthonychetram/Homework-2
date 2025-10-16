@@ -1,0 +1,5 @@
+node_moduels
+build
+nmp-debug.log
+.env
+.DS_Store
