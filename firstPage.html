@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <script>
+        class Actor {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+            }
+
+            move(horizontal, vertical) {
+                this.x += horizontal;
+                this.y += vertical;
+            }
+
+            distanceTo(otherActor) {
+                let dx = otherActor.x - this.x;
+                let dy = otherActor.y - this.y;
+                let distance = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
+                return distance;
+            }
+        }
+
+        class Player extends Actor {
+            constructor(x, y) {
+                super(x, y);
+                this.HP = 100;
+            }
+        }
+
+        class Enemy extends Actor {
+            attack(player) {
+                console.log("enemy is attacking");
+                if (this.distanceTo(player) < 4) {
+                    player.HP -= 10;
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        }
+
+        let player1 = new Player(0, 0);
+        let enemy1 = new Enemy(1, 1);
+
+        enemy1.attack(player1);
+        console.log(player1.HP);
+
+        class Follower extends Actor{
+            constructor(x, y, player){
+                this.x = x;
+                this.y = y;
+                this.player = player;
+            }
+            follow(){
+                this.x = player.x;
+                this.y = player.y;
+            }
+        }
+
+        // create 2 instances of player and use the move method to move them
+        // print out their positions in the console
+    </script>
+</body>
+
+</html>
